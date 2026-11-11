@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ClickSafe</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+		integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+		crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link rel="stylesheet" href="style.css">
+
+	<script src="script.js" defer></script>
+</head>
+
+<body>
+	<nav>
+		<div class="logo">
+			<i class="fa-solid fa-shield"></i>
+			<h3>ClickSafe</h3>
+		</div>
+		<div class="nav-tabs">
+			<button class="nav-tab active" data-tab="check-tab">
+				Check URL
+			</button>
+			<button class="nav-tab" data-tab="dashboard-tab">
+				Dashboard
+			</button>
+		</div>
+	</nav>
+
+	<main>
+		<div class="container">
+			<section id="check-tab" class="tab-content active">
+				<h1 class="Heading1">
+					Phishing or legitimate?
+				</h1>
+				<p class="first-instruction">
+					Paste a link and our machine-learning model will analyse it and explain its <br> decision.
+				</p>
+
+				<div class="analyse-url">
+					<input class="analyse-url-bar" type="text"
+						placeholder="Paste your URL, e.g http://paypay-secure-login.xyz/verify">
+					<button class="analyse-url-btn">Analyse URL</button>
+				</div>
+				<div class="fake-urls" id="chips">
+					<button class="fake-urls-btn" type="button" data-url="https://google.com">google.com</button>
+					<button class="fake-urls-btn" type="button" data-url="http://paypal-secure-login.xyz/verify">fake
+						PayPal</button>
+					<button class="fake-urls-btn" type="button" data-url="http://192.168.4.21/login">IP address
+						link</button>
+				</div>
+
+				<p id="result"></p>
+
+			</section>
+
+			<section id="dashboard-tab" class="tab-content second">
+				<h2 class="Heading2">
+					Model dashboard
+				</h2>
+				<p class="second-instruction">
+					How the trained models performed on the held-out test set (positive class = phishing).
+				</p>
+				<div class="first-wrapper">
+					<div class="card">
+						<h2>97.1%</h2>
+						<p class="card-paragraph">Accuracy · XGBoost</p>
+					</div>
+					<div class="card">
+						<h2>96.7%</h2>
+						<p class="card-paragraph">Precision · XGBoost</p>
+					</div>
+					<div class="card">
+						<h2>97.5%</h2>
+						<p class="card-paragraph">Recall · XGBoost</p>
+					</div>
+					<div class="card">
+						<h2>97.1%</h2>
+						<p class="card-paragraph">F1-score · XGBoost</p>
+					</div>
+					<div class="card">
+						<h2>0.991</h2>
+						<p class="card-paragraph">ROC-AUC · XGBoost</p>
+					</div>
+					<div class="card">
+						<h2>3.3%</h2>
+						<p class="card-paragraph">False-positive rate · XGBoost</p>
+					</div>
+				</div>
+
+				<div class="model-comparison">
+					<h3 class="Heading3">
+						Model comparison
+					</h3>
+
+					<table class="comparison-table">
+						<thead>
+							<tr>
+								<th>Model</th>
+								<th>Accuracy</th>
+								<th>Precision</th>
+								<th>Recall</th>
+								<th>F1</th>
+								<th>ROC-AUC</th>
+								<th>FPR</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Logistic Regression</td>
+								<td>90.8%</td>
+								<td>90.6%</td>
+								<td>91.2%</td>
+								<td>90.9%</td>
+								<td>0.952</td>
+								<td>9.5%</td>
+							</tr>
+							<tr>
+								<td>Random Forest</td>
+								<td>96.4%</td>
+								<td>95.9%</td>
+								<td>96.8%</td>
+								<td>96.4%</td>
+								<td>0.987</td>
+								<td>4.1%</td>
+							</tr>
+							<tr class="diff">
+								<td>XGBoost</td>
+								<td>97.1%</td>
+								<td>96.7%</td>
+								<td>97.5%</td>
+								<td>97.1%</td>
+								<td>0.991</td>
+								<td>3.3%</td>
+							</tr>
+							<tr>
+								<td>SVM</td>
+								<td>93.5%</td>
+								<td>93.1%</td>
+								<td>94.0%</td>
+								<td>93.5%</td>
+								<td>0.968</td>
+								<td>7.0%</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="thrid-dashborad">
+					<div class="confusion-matrix">
+						<h3>Confusion matrix</h3>
+						<select name="" id="dropdown">
+							<option value="logistics">Logistics Regression</option>
+							<option value="randomForest">Random Forest</option>
+							<option value="xgBoost">XGBoost</option>
+							<option value="smv">SMV</option>
+						</select>
+
+						<div class="matrix">
+							<div></div>
+							<div>Predicted legit</div>
+							<div>Predicted phishing</div>
+							<div class="actually">Actually legit</div>
+							<div class="bad" id="falseNegative">32 <br><br><span class="span">False Nagative</span></div>
+							<div class="good" id="trueNegative">959 <br><br><span class="span">True Negative</span></div>
+							<div class="actually">Actually phishing</div>
+							<div class="good" id="truePositive">968 <br><br><span class="span">True Positive</span></div>
+							<div class="bad" id="falsePositive">41 <br><br><span class="span">False Positive</span></div>
+						</div>
+					</div>
+
+					<div class="features">
+						<h3 class="Heading2">
+							Global SHAP: most important features
+						</h3>
+						<p class="second-instruction">
+							Average impact on the model’s output
+						</p>
+						<div class="feature-container">
+							<div class="feature-list">
+								<div class="feature-wrapper">
+									<span class="feature-name">URL length</span>
+									<div class="bar-track">
+										<div class="bar" style="width: 100%;"></div>
+									</div>
+								</div>
+								<span class="value">0.42</span>
+							</div>
+
+							<div class="feature-list">
+								<div class="feature-wrapper">
+									<span class="feature-name">Uses HTTPS</span>
+									<div class="bar-track">
+										<div class="bar" style="width: 90%;"></div>
+									</div>
+								</div>
+								<span class="value">0.36</span>
+							</div>
+
+							<div class="feature-list">
+								<div class="feature-wrapper">
+									<span class="feature-name">Number of dots</span>
+									<div class="bar-track">
+										<div class="bar" style="width: 80%;"></div>
+									</div>
+								</div>
+								<span class="value">0.29</span>
+							</div>
+
+							<div class="feature-list">
+								<div class="feature-wrapper">
+									<span class="feature-name">Suspicious words</span>
+									<div class="bar-track">
+										<div class="bar" style="width: 70%;"></div>
+									</div>
+								</div>
+								<span class="value">0.27</span>
+							</div>
+
+							<div class="feature-list">
+								<div class="feature-wrapper">
+									<span class="feature-name">Number of hyphens</span>
+									<div class="bar-track">
+										<div class="bar" style="width: 60%;"></div>
+									</div>
+								</div>
+								<span class="value">0.21</span>
+							</div>
+
+							<div class="feature-list">
+								<div class="feature-wrapper">
+									<span class="feature-name">Sub-domain count</span>
+									<div class="bar-track">
+										<div class="bar" style="width: 50%;"></div>
+									</div>
+								</div>
+								<span class="value">0.17</span>
+							</div>
+
+							<div class="feature-list">
+								<div class="feature-wrapper">
+									<span class="feature-name">Has IP address</span>
+									<div class="bar-track">
+										<div class="bar" style="width: 40%;"></div>
+									</div>
+								</div>
+								<span class="value">0.13</span>
+							</div>
+
+							<div class="feature-list">
+								<div class="feature-wrapper">
+									<span class="feature-name">Digit ratio</span>
+									<div class="bar-track">
+										<div class="bar" style="width: 30%;"></div>
+									</div>
+								</div>
+								<span class="value">0.09</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+
+</body>
+
+</html>
