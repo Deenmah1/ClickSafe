@@ -61,4 +61,48 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+
+    const modelSelect = document.getElementById('dropdown');
+
+    const modelData = {
+        logistics: {
+            trueNegative: 905,
+            falsePositive: 95,
+            falseNegative: 88,
+            truePositive: 912
+        },
+
+        randomForest: {
+            trueNegative: 959,
+            falsePositive: 41,
+            falseNegative: 32,
+            truePositive: 968
+        },
+
+        xgBoost: {
+            trueNegative: 967,
+            falsePositive: 33,
+            falseNegative: 25,
+            truePositive: 975
+        },
+
+        svm: {
+            trueNegative: 930,
+            falsePositive: 70,
+            falseNegative: 60,
+            truePositive: 940
+        }
+    };
+
+    modelSelect.addEventListener('change', function (e) {
+        e.preventDefault();
+
+        const selectModel = modelSelect.value;
+        const result = modelData[selectModel];
+
+        document.getElementById('fn').textContent = result.falseNegative;
+        document.getElementById('tn').textContent = result.trueNegative;
+        document.getElementById('tp').textContent = result.truePositive;
+        document.getElementById('fp').textContent = result.falsePositive;
+    });
 });
