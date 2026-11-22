@@ -16,10 +16,37 @@
 //     });
 // });
 
+// function $(selector, context = null) {
+//     let base = document;
+//     if (context) {
+//         switch (typeof context) {
+//             case 'string':
+//                 base = document.querySelector(context) ?? document;
+//                 break;
+//             case 'object':
+//                 base = context.constructor?.name.toLowerCase().includes('html') ? context : document;
+//                 break;
+//             default:
+//                 break;
+//         }
+//     }
+//     return base.querySelectorAll(selector);
+// }
+
 document.addEventListener("DOMContentLoaded", () => {
     const navTabs = document.querySelectorAll(".nav-tab");
     const tabContents = document.querySelectorAll(".tab-content");
 
+    // fx('.nav-tab').upon('click', function (e) {
+    //     e.preventDefault();
+    //     const target = fx(e.currentTarget);
+    //     const tabContent = fx(`#${target.dataAttrib('tab')}`);
+
+    //     fx('.tab-content').each(tabContent => tabContent.removeClass('active'));
+    //     fx('.nav-tab.active').removeClass('active');
+    //     tabContent.putClass('active');
+    //     target.putClass('active');
+    // });
     navTabs.forEach((navTab) => {
         const tabContent = document.getElementById(navTab.getAttribute("data-tab"));
 

@@ -8,8 +8,11 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
 		integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
 		crossorigin="anonymous" referrerpolicy="no-referrer">
+
+	<link rel="stylesheet" href="node_modules/fuxcel/dist/css/fuxcel.css">
 	<link rel="stylesheet" href="style.css">
 
+	<script src="node_modules/fuxcel/dist/js/fuxcel.js" defer></script>
 	<script src="script.js" defer></script>
 </head>
 
@@ -158,16 +161,20 @@
 							<option value="svm">SVM</option>
 						</select>
 
-						<div class="matrix">
+						<div class="matrix">	
 							<div></div>
 							<div>Predicted legit</div>
 							<div>Predicted phishing</div>
 							<div class="actually">Actually legit</div>
-							<div class="bad" id="falseNegative"><span id="fn">32</span> <br><br><span class="span">False Nagative</span></div>
-							<div class="good" id="trueNegative"><span id="tn">959</span><br><br><span class="span">True Negative</span></div>
+							<div class="bad" id="falseNegative"><span id="fn">32</span> <br><br><span class="span">False
+									Nagative</span></div>
+							<div class="good" id="trueNegative"><span id="tn">959</span><br><br><span class="span">True
+									Negative</span></div>
 							<div class="actually">Actually phishing</div>
-							<div class="good" id="truePositive"><span id="tp">968</span> <br><br><span class="span">True Positive</span></div>
-							<div class="bad" id="falsePositive"><span id="fp">41</span> <br><br><span class="span">False Positive</span></div>
+							<div class="good" id="truePositive"><span id="tp">968</span> <br><br><span class="span">True
+									Positive</span></div>
+							<div class="bad" id="falsePositive"><span id="fp">41</span> <br><br><span class="span">False
+									Positive</span></div>
 						</div>
 					</div>
 
