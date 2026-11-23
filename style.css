@@ -38,25 +38,22 @@ nav {
 
 .container {
     width: 100%;
-    padding: 0 2rem;
+    padding: 0 1rem;
     margin: 0 auto;
 }
 
 @media (max-width: 640px) {
 
     nav {
-        padding: 0 3rem;
-    }
-    .container {
-        max-width: 640px;
+        padding: 0 1rem;
     }
     .comparison-table {
         font-size: 0.5rem;
     }
 
-    .thrid-dashborad {
+    /* .thrid-dashborad {
         flex-direction: row;
-    }
+    } */
 }
 
 @media (min-width: 768px) {

@@ -1,0 +1,58 @@
+@media (min-width: 992px) {
+    
+}
+
+@media (min-width: 768px) {
+    
+}
+
+@media (max-width: 640px) {
+    .logo-name {
+        font-size: 1rem;
+    }
+
+    .fa-shield {
+        padding-top: 15px;
+        margin-right: 10px;
+    }
+
+    .first-instruction {
+        font-size: 1.1rem;
+    }
+
+    /* -----------------------------------------DASHBORAD----------------------------------------- */
+
+    .comparison-table td {
+        padding: 7px;
+    }
+
+
+    .model-comparison {
+       margin-left: 0;
+       margin-right: 0;
+        
+    }
+
+    .thrid-dashborad {
+        display: block;
+    }
+
+    .confusion-matrix {
+        width: 100%;
+    }
+
+    .features {
+        padding: 20px;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .feature-container {
+        font-size: .67rem;
+    }
+
+   .feature-name {
+        width: 180px;
+    }
+}
